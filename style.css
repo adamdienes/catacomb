@@ -1,0 +1,318 @@
+/* Készítette: Dienes Ádám - i93ajy */
+/* Webprogramozás: JavaScript beadandó */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=MedievalSharp);
+
+body {
+    font-family: "Roboto", sans-serif;
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('img/bg_main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#container {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color:rgba(255, 255, 255, 0.9);
+    height: 100vh;
+    overflow-y:scroll;
+}
+
+h1 {
+    font-family: "MedievalSharp", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#holder { text-align: center; }
+
+input {
+    text-align: center;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#reset, #start, #help {
+    background-color: #028A0F; 
+    border: none;
+    color: white;
+    padding: 16px 35px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#save {
+    background-color: #323232; 
+    border: none;
+    color: white;
+    padding: 16px 35px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#load {
+    background-color: #483d8b; 
+    border: none;
+    color: white;
+    padding: 16px 35px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#delete {
+    background-color: #646464; 
+    border: none;
+    color: white;
+    padding: 16px 35px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#isSave {
+    margin: 40px 0px 10px 0px;
+    font-weight: bold;
+}
+
+#stats {
+    text-align: center;
+    margin: 10px auto;
+    width: fit-content;
+}
+
+#actualitem {
+    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+    z-index: -1;
+    float: left;
+}
+
+#rotateholder {
+    margin: 10 auto;
+    width: fit-content;
+    z-index: 100;
+    float: left;
+}
+
+#holderItem {
+    width: fit-content;
+    margin: 10px auto 90px auto;
+}
+
+.center {
+    margin: 20px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+#stats > img { margin-left: 25px; }
+
+.arrow {
+    background-color: transparent; 
+    border: none;
+    background-image: url('img/arrow.png');
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    overflow: hidden;
+    outline: none;
+    position: relative;
+}
+.arrow:hover { background-image: url('img/arrow_hover.png'); }
+#reset:hover, #load:hover, #delete:hover, #start:hover, #help:hover {opacity: 1}
+#help { background-color: #646464; }
+
+#right1 {
+    left:-95px;
+    top: 120px;
+}
+#right2 {
+    left:-118px;
+    top: 260px;
+}
+#right3 {
+    left:-141px;
+    top: 408px;
+}
+#left1 {
+    left: 508px;
+    top: 125px;
+}
+#left2 {
+    left: 482px;
+    top: 270px;
+}
+#left3 {
+    left: 460px;
+    top: 415px;
+}
+#down1 {
+    left: -115px;
+}
+#down2 {
+    left: 7px;
+}
+#down3 {
+    left: 125px;
+}
+#up1 {
+    right: 47px;
+    top: 532px;
+}
+#up2 {
+    left: 72px;
+    top: 532px;
+}
+#up3 {
+    left: 190px;
+    top: 532px;
+}
+
+#logo {
+    padding-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    margin: 0 auto;
+}
+
+#controls {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#rotate {
+    border: none;   
+    font-size: 35px;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    transition: 0.2s;
+}
+
+#rotate:hover {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+}
+
+.rotateImg {
+    transition: 0.5s;
+}
+
+table {
+    border-collapse: collapse; 
+    text-align: center;  
+    margin: 0 auto;
+    font-size: 25px;
+    background-color: #800000;
+}
+
+#tableholder {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 25px;
+    height: 550px;
+    margin: 0 auto;
+    background-image: url('img/bg.jpg');
+    background-color:#483d8b;
+}
+
+td {
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+td:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#error {
+    background-color: #A91B0D;
+    color: white;
+    text-align: center;
+    width: 700px;
+    margin: auto;
+    padding: 10px 0 10px 0;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+#result {
+    background-color: green;
+    width: fit-content;
+    color: white;
+    padding: 0 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hidden { display: none; }
+
+#desc {
+    text-align: left;
+    line-height: 25px;
+}
+
+#credit {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.rotate0{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+}
+
+.rotate90, .up {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+}
+.rotate180, .right {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+.rotate270, .down {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+}

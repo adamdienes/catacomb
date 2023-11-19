@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varázslatos katakomba</title>
+    <meta name="author" content="Dienes Ádám">
+    <link rel="shortcut icon" href="img/play.png" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <img id="logo" src="img/play.png" alt="logo">
+        <h1>Varázslatos katakomba</h1>
+        <div id="holder">
+            <p>Játékosok száma (1-4 fő):</p>
+            <input id="players" type="number" value="2" min="1" max="4" onChange="displayFigures()">
+            <br><span id="figureHolder"><img src='img/player_blue.png' alt="blue" width='25'><img
+                    src='img/player_red.png' width="25" alt="red"></span>
+
+            <p>Kincskártyák száma játékosonként: </p>
+            <input id="cards" type="number" value="2" min="1" max="24"><br>
+            <button id="help">🛈 Játék leírása</button>
+            <button id="start">➔ Start</button>
+
+            <div id="savedGame" class="hidden">
+                <p id="isSave">Van korábbról mentett állapot!</p>
+                <button id="delete">Mentés törlése</button>
+                <button id="load">Mentés betöltése</button>
+            </div>
+
+            <div id="error" class="hidden"></div>
+            <div id="result"></div>
+        </div>
+
+        <div id="desc" class="hidden">
+            <h2>A játék rövid leírása</h2>
+            <p>A <b>katakomba</b> szobáit egy 7x7-es négyzetrács cellái jelképezik. Minden szoba esetén adott, hogy mely
+                falain van ajtó. Ha két szomszédos szoba érintkező falán egy-egy ajtó van, akkor át lehet menni egyik
+                szobából a másikba. A négyzetrács páros sorait és oszlopait el lehet tolni, a többi szoba végig
+                rögzített a játék során. Az eltolásokkal az ajtókon keresztül utak nyílnak a szobák között, így lehet
+                eljutni a kincsekhez. Mindegyik kérő arra törekszik, hogy a katakomba szobáinak ötletes eltolásával
+                eljusson a kincsekhez. Aki elsőként találja meg mindahányat és kiindulópontjára sikeresen visszaérkezik
+                az a nyertes.</p>
+            <p>A <b>játék elején </b>a szobákat véletlen sorrendben és véletlen irányban kirakjuk a játéktábla szabad
+                mezőire. A szobák közül az egyik mindenképpen fölösleges marad. A játék folyamán majd mindig az éppen
+                kimaradó szobát használjuk a többi szoba elcsúsztatására. A játékban legfeljebb 24 kincset kell
+                megtalálni. Ezeket véletlen sorrendben felrakjuk a táblára úgy, hogy egy mezőn csak egy kincs lehet, és
+                a sarokba nem rakhatunk, majd az ezeket jelző kártyákat összekeverjük, és egyenlő számban szétosztjuk a
+                játékosok között, felfedve mindig a legfelső kártyát. A játékosokat jelző figurákat a tábla külön
+                sarkaiba helyezzük.</p>
+            <p>A <b>játék során</b> minden játékosnak a kincsei közül azt kell megszereznie, amit az aktuálisan
+                legfelső, mindenki által látható kincskártya mutat. Arra a mezőre kell eljutni. Ahhoz, hogy a célt
+                elérje, a játékosnak</p>
+            <ol>
+                <li>először a katakombát kell átalakítania a kimaradt szoba tetszőleg forgatásával, majd
+                    becsúsztatásával,</li>
+                <li>és lépnie a szomszédos mezők valamelyikére mindig csak ez után szabad a figurájával.</li>
+            </ol>
+            <p>A <b>katakomba átalakítása</b> a következőképpen történik: A játékos a kimaradt szobát (tetszőlegesen
+                elforgatva) valamelyik oldalról becsúsztathatja a játéktábla területére egy szabadon mozgó sor vagy
+                oszlop szélén, aminek következtében az átellenes oldalon kiesik egy másik szoba. A tábla szélén nyilak
+                jelzik azokat a helyeket, ahol a szobát be lehet csúsztatni. A szoba bárhol betolható, kivétel ott, ahol
+                az imént kilökődött. Nem szabad tehát az előző játékos lépését rögtön „visszacsinálni". <br><br>Ha a
+                szobák eltolása során a szobákban lévő elem <i>(kincs vagy játékos)</i> a kezdeti helyén marad, <b>tehát
+                    nem mozognak együtt </b>a pályával. A játékosok elmozdítani az adott helyről csak manuális lépéssel
+                lehet.</p>
+            <p>A szobák eltolását követi a <b>játékos lépése</b> a figurával. A katakomba olyan szomszédos
+                (le-fel-balra-jobbra) szobájába lehet eljutni, amelyet a ajtók kötnek össze a szobák mindenkét oldalán.
+                Nem kötelező lépni, figuránkat akár ott is hagyhatjuk, ahol éppen van. Ezt úgy tehetjük meg, hogy
+                kijelöljük az aktuális játékosunkat és ugyanabba a cellába lépünk vissza. Ezzel jelezzük, hogy a
+                következő játékos következik. Egy mezőn több figura nem állhat: olyan mezőre, amelyen figura van nem
+                tudunk lépni egy másik játékossal, még akkor sem ha a két szobát ajtók kötik össze. <br><br> Ha valaki
+                <b>elérte a felfedett kincskártya által megjelölt célt</b>, akkor felfedi a következőt, és most ehhez a
+                célhoz igyekszik eljutni. Ha egy nem az adott játékoshoz tartozó kincskártyát vesz fel egy másik
+                játékos, akkor azzal a másik játékosnak kedvez. Minden esetben a színnek megfelelő kincskincskártyák
+                száma növelődik, így célszerű ezt elkerülni.
+            </p>
+            <p>A <b>játék akkor ér véget,</b> ha egy játékos az összes kincskártyájához tartozó kincset megszerezte, és
+                visszavezette a figuráját arra mezőre, ahonnan elindult. Az a győztes, aki valamennyi kincsét megtalálta
+                és figuráját elsőként juttatta vissza a kiindulópontra, ezt a program egy felugró ablakkal jelzi azt
+                nekünk és visszavisz a kezdőoldalra.</p>
+        </div>
+
+        <div id="stats" class="hidden"></div>
+        <div id="leftovercell" class="center hidden">Kimaradt elem</div>
+        <div id="holderItem" class="hidden">
+            <div id="actualitem"></div>
+            <div id="rotateholder"><button id="rotate">↺</button></div>
+        </div>
+        <div id="actualPlayer" class="center hidden">Aktuális játékos: </div>
+
+        <div id="tableholder" class="hidden">
+            <button id="left1" class="arrow left"></button>
+            <button id="left2" class="arrow left"></button>
+            <button id="left3" class="arrow left"></button>
+
+            <button id="right1" class="arrow right"></button>
+            <button id="right2" class="arrow right"></button>
+            <button id="right3" class="arrow right"></button>
+
+            <button id="up1" class="arrow up"></button>
+            <button id="up2" class="arrow up"></button>
+            <button id="up3" class="arrow up"></button>
+
+            <button id="down1" class="arrow down"></button>
+            <button id="down2" class="arrow down"></button>
+            <button id="down3" class="arrow down"></button>
+            <table></table>
+        </div>
+
+        <div id="controls" class="hidden">
+            <button id="reset">↺ Visszaállítás</button>
+            <button id="save">♥ Játék mentése</button>
+        </div>
+
+        <p id="credit">Készítette: Dienes Ádám</p>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
